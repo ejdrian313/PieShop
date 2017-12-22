@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PieShop.Models
 {
-    interface IPieRepository
+    public interface IPieRepository
     {
         IEnumerable<Pie> Pies { get; }
         IEnumerable<Pie> PiesOfTheWeek { get; }

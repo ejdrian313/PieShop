@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PieShop.Models
 {
-    interface ICategoryRepository
+    public interface ICategoryRepository
     {
         IEnumerable<Category> Categories { get; }
     }

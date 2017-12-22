@@ -3,14 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using PieShop.Models;
 
 namespace PieShop.Controllers
 {
     public class PieController : Controller
     {
-        public IActionResult Index()
+        private readonly IPieRepository _pieRepository;
+        private readonly ICategoryRepository _categoryRepository;
+
+        public PieController(ICategoryRepository categoryRepository, IPieRepository pieRepository)
         {
-            return View();
+            _pieRepository = pieRepository;
+            _categoryRepository = categoryRepository;
+        }
+
+        public ViewResult List()
+        {
+            return View(_pieRepository.Pies);
         }
     }
 }
