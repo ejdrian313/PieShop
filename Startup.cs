@@ -26,12 +26,18 @@ namespace PieShop
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<IPieRepository, PieRepository>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped<ShoppingCart>(sp => ShoppingCart.GetCart(sp));
+            services.AddMemoryCache();
+            services.AddSession();
             services.AddMvc();
         } 
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseSession();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -39,7 +45,7 @@ namespace PieShop
                 app.UseStaticFiles();
                 app.UseMvcWithDefaultRoute();
             }
-
+            
             app.Run(async (context) =>
             {
                 await context.Response.WriteAsync("Hello World!");
