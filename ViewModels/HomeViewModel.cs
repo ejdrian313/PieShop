@@ -8,6 +8,6 @@ namespace PieShop.ViewModels
 {
     public class HomeViewModel
     {
-        IEnumerable<Pie> PiesOfTheWeek { get; set; }
+        public IEnumerable<Pie> PiesOfTheWeek { get; set; }
     }
 }
