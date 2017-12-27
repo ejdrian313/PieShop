@@ -22,7 +22,7 @@ namespace PieShop.Components
             var items = _shoppingCart.GetShoppingCartItems();
             _shoppingCart.ShoppingCartItems = items;
 
-            var shoppingCartViewModel = new ShopingCartViewModel
+            var shoppingCartViewModel = new ShoppingCartViewModel
             {
                 ShoppingCart = _shoppingCart,
                 ShoppingCartTotal = _shoppingCart.GetShoppingCartTotal()
@@ -31,3 +31,4 @@ namespace PieShop.Components
         }
     }
 }
+

@@ -1,7 +1,7 @@
-﻿<h1>@Model.CurrentCategory</h1>
+﻿@model PiesListViewModel
+
+@ViewBag.CurrentCategory
 @foreach (var pie in Model.Pies)
 {
-<div>
-    @Html.Partial("PieOverviewSummary", pie)    
-</div>
+    @Html.Partial("PieOverviewSummary", pie)
 }

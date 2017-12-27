@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PieShop.ViewModels
 {
-    public class ShopingCartViewModel
+    public class ShoppingCartViewModel
     {
         public ShoppingCart ShoppingCart { get; set; }
         public decimal ShoppingCartTotal { get; set; }

@@ -11,14 +11,13 @@ namespace PieShop.Models
     public class ShoppingCart
     {
         private readonly AppDbContext _appDbContext;
+        public string ShoppingCartId { get; set; }
+        public List<ShoppingCartItem> ShoppingCartItems { get; set; }
+
         private ShoppingCart(AppDbContext appDbContext)
         {
             _appDbContext = appDbContext;
         }
-
-        public string ShoppingCartId { get; set; }
-
-        public List<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         public static ShoppingCart GetCart(IServiceProvider services)
         {
