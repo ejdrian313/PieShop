@@ -10,6 +10,7 @@ namespace PieShop.Components
 {
     public class ShoppingCartSummary : ViewComponent
     {
+
         private readonly ShoppingCart _shoppingCart;
 
         public ShoppingCartSummary(ShoppingCart shoppingCart)

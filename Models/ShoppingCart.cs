@@ -19,6 +19,11 @@ namespace PieShop.Models
             _appDbContext = appDbContext;
         }
 
+        public int CountPiesInCart()
+        {
+            return ShoppingCartItems.Sum(p => p.Amount);
+        }
+
         public static ShoppingCart GetCart(IServiceProvider services)
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?
