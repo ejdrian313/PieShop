@@ -25,16 +25,16 @@ namespace PieShop.Controllers
             string currentCategory = string.Empty;
 
 
-            if (string.IsNullOrEmpty(category))
+            if (_categoryRepository.Categories.Any(c => c.CategoryName.Equals(category)))
             {
-                pies = _pieRepository.Pies.OrderBy(p => p.PieId);
-                currentCategory = "All pies";
+                pies = _pieRepository.Pies.Where(p => p.Category.CategoryName == category)
+                   .OrderBy(p => p.PieId);
+                currentCategory = _categoryRepository.Categories.FirstOrDefault(c => c.CategoryName == category).CategoryName;
             }
             else
             {
-                pies = _pieRepository.Pies.Where(p => p.Category.CategoryName == category)
-                .OrderBy(p => p.PieId);
-                currentCategory = _categoryRepository.Categories.FirstOrDefault(c => c.CategoryName == category).CategoryName;
+                pies = _pieRepository.Pies.OrderBy(p => p.PieId);
+                currentCategory = "All pies";
             }
 
             return View(new PiesListViewModel
